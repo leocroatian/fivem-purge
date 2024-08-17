@@ -8,10 +8,12 @@ version '1.0.0'
 
 lua54 'yes'
 
-client_scripts {
-    'client.lua',
+ui_page 'index.html'
+
+files {
+    'index.html',  -- Name of your HTML file
+    'sounds/purge.ogg',  -- Example sound file
 }
 
-server_scripts {
-    'server.lua'
-}
+client_script 'client.lua'
+server_script 'server.lua'

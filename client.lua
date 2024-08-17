@@ -4,7 +4,7 @@ RegisterNetEvent('purge:stop')
 local purgeActive = false
 local count = 0
 
-AddEventHandler('purge:start', function()
+AddEventHandler('purge:start', function() -- initial purge start
     CreateThread(function()
         local scaleformHandle = RequestScaleformMovie("mp_big_message_freemode") 
         while not HasScaleformMovieLoaded(scaleformHandle) do 
@@ -16,7 +16,7 @@ AddEventHandler('purge:start', function()
         PushScaleformMovieMethodParameterString("~r~Purge has started")
         EndScaleformMovieMethod()
 
-        while count ~= 500 do
+        while count ~= 500 do -- wait 500 counts and then stop drawing the purge text
             Citizen.Wait(0)
             DrawScaleformMovieFullscreen(scaleformHandle, 255, 255, 255, 255)
             count = count + 1
@@ -26,7 +26,7 @@ AddEventHandler('purge:start', function()
     end)
 end)
 
-AddEventHandler('purge:start', function()
+AddEventHandler('purge:start', function() -- handle the weather
     CreateThread(function()
         purgeActive = true
         while purgeActive do
@@ -40,7 +40,7 @@ AddEventHandler('purge:start', function()
     end)
 end)
 
-AddEventHandler('purge:stop', function()
+AddEventHandler('purge:stop', function() -- handle the purge stopping
     CreateThread(function()
         purgeActive = false
         ClearOverrideWeather()

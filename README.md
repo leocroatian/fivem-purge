@@ -4,6 +4,8 @@ It will automatically start the purge t-minus 3 minutes before server has to be 
 
 It just gives an asthetic feel/look for your server and the players inside of it.
 
+![image](https://github.com/user-attachments/assets/07f9ed44-d9d6-4080-be57-00ebfedb7766)
+
 **How do we set it up through TxAdmin?**
 - Put a Scheduled Restart on or if you guys have pre-made/setup ones you it will just run whenever there is 3 minutes left to restart
 

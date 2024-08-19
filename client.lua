@@ -14,7 +14,8 @@ AddEventHandler('purge:start', function() -- initial purge start
         StartScreenEffect('DeathFailMPDark')
 
         BeginScaleformMovieMethod(scaleformHandle, "SHOW_SHARD_WASTED_MP_MESSAGE")
-        PushScaleformMovieMethodParameterString("~r~Purge has started")
+        PushScaleformMovieMethodParameterString("~r~Emergency Broadcast System")
+        PushScaleformMovieMethodParameterString("This is your Emergency Broadcast System announcing the commencement of the Annual Purge sanctioned by the U.S. Government")
         EndScaleformMovieMethod()
 
         SendNUIMessage({
@@ -23,7 +24,7 @@ AddEventHandler('purge:start', function() -- initial purge start
             transactionVolume = 0.5
         })
 
-        while count ~= 1000 do -- wait 1000 counts and then stop drawing the purge text
+        while count ~= 1500 do -- wait 1000 counts and then stop drawing the purge text
             DrawScaleformMovieFullscreen(scaleformHandle, 255, 255, 255, 255)
             count = count + 1
             Wait(0)

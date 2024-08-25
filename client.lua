@@ -37,8 +37,10 @@ AddEventHandler('purge:start', function() -- handle the weather
     CreateThread(function()
         purgeActive = true
         while purgeActive do
-            SetWeatherTypeNow("HALLOWEEN")
-            SetOverrideWeather("HALLOWEEN")
+            SetWeatherTypeNow('HALLOWEEN')
+            SetOverrideWeather('HALLOWEEN')
+            SetWeatherTypePersist('HALLOWEEN')
+            SetWeatherTypeNowPersist('HALLOWEEN')
             SetArtificialLightsState(true)
             SetArtificialLightsStateAffectsVehicles(false)
             PauseClock(true)

@@ -30,22 +30,31 @@ AddEventHandler('purge:start', function() -- initial purge start
             Wait(0)
         end
         
+        StopScreenEffect("DeathFailMPDark")
     end)
 end)
 
 AddEventHandler('purge:start', function() -- handle the weather
     CreateThread(function()
         purgeActive = true
-        while purgeActive do
+        if purgeActive then
+            print('setting weather')
             SetWeatherTypeNow('HALLOWEEN')
             SetOverrideWeather('HALLOWEEN')
             SetWeatherTypePersist('HALLOWEEN')
             SetWeatherTypeNowPersist('HALLOWEEN')
             SetArtificialLightsState(true)
-            SetArtificialLightsStateAffectsVehicles(false)
+            SetArtificialLightsStateAffectsVehicles(true)
             PauseClock(true)
-            NetworkOverrideClockTime(00, 00, 00)
-            SetClockTime(00, 00, 00)
+            print(tostring(GetWeatherTypeTransition()))
+        end
+        while true do
+            while purgeActive do
+                print('setting time')
+                NetworkOverrideClockTime(00, 00, 00)
+                SetClockTime(00, 00, 00)
+                Citizen.Wait(0)
+            end
             Citizen.Wait(0)
         end
     end)
@@ -61,6 +70,6 @@ AddEventHandler('purge:stop', function() -- handle the purge stopping
         PauseClock(false)
         NetworkOverrideClockTime(12, 00, 00)
         SetClockTime(12, 00, 00)
-        StopScreenEffect("DeathFailMPDark")
+        SetArtificialLightsState(false)
     end)
 end)
